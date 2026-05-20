@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Photos Bulk Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 50px; background-color: #f8f9fa; }
+        .container { max-width: 600px; }
+        .card { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Photos Downloader</h1>
+
+        <div id="auth-section" class="card">
+            <div class="card-body">
+                <h5 class="card-title">Authentication</h5>
+                <p id="auth-status" class="card-text text-danger">Not connected to Google Photos.</p>
+                <button id="auth-btn" class="btn btn-primary">Connect Google Account</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Configuration</h5>
+                <form id="config-form">
+                    <div class="mb-3">
+                        <label class="form-label">Download Path</label>
+                        <input type="text" id="download_path" class="form-control" placeholder="/path/to/nas/photos">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Schedule (Cron Format)</label>
+                        <input type="text" id="schedule_cron" class="form-control" placeholder="0 2 * * *">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Older than (Months)</label>
+                        <input type="number" id="months_ago" class="form-control" value="12">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="enabled">
+                        <label class="form-check-label">Enable Scheduled Sync</label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save Configuration</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Actions</h5>
+                <button id="sync-btn" class="btn btn-warning">Start Manual Sync Now</button>
+                <div id="sync-status" class="mt-2 text-muted"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
